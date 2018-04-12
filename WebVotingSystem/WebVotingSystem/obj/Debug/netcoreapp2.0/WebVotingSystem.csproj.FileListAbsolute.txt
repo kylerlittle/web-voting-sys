@@ -1,0 +1,11 @@
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\bin\Debug\netcoreapp2.0\WebVotingSystem.deps.json
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\bin\Debug\netcoreapp2.0\WebVotingSystem.runtimeconfig.json
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\bin\Debug\netcoreapp2.0\WebVotingSystem.runtimeconfig.dev.json
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\bin\Debug\netcoreapp2.0\WebVotingSystem.dll
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\bin\Debug\netcoreapp2.0\WebVotingSystem.pdb
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\obj\Debug\netcoreapp2.0\WebVotingSystem.csprojResolveAssemblyReference.cache
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\obj\Debug\netcoreapp2.0\WebVotingSystem.csproj.CoreCompileInputs.cache
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\obj\Debug\netcoreapp2.0\WebVotingSystem.AssemblyInfoInputs.cache
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\obj\Debug\netcoreapp2.0\WebVotingSystem.AssemblyInfo.cs
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\obj\Debug\netcoreapp2.0\WebVotingSystem.dll
+c:\users\klittle-windows-10\source\repos\WebVotingSystem\WebVotingSystem\obj\Debug\netcoreapp2.0\WebVotingSystem.pdb

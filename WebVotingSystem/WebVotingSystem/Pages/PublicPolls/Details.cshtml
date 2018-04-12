@@ -1,0 +1,49 @@
+@page "{id:int?}"
+@model WebVotingSystem.Pages.PublicPolls.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Poll</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Poll.StartTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Poll.StartTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Poll.EndTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Poll.EndTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Poll.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Poll.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Poll.PollCreator)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Poll.PollCreator)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Poll.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Poll.Type)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Poll.PollID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

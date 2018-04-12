@@ -1,0 +1,60 @@
+@page
+@model WebVotingSystem.Pages.PublicPolls.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Poll[0].StartTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Poll[0].EndTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Poll[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Poll[0].PollCreator)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Poll[0].Type)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Poll) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PollCreator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.PollID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.PollID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.PollID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
