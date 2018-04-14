@@ -13133,11 +13133,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\klittle-windows-10\\source\\repos\\WebVotingSystem\\WebVotingSystem\\WebVotingSystem.csproj",
+      "projectUniqueName": "C:\\Users\\klittle-windows-10\\source\\repos\\WebVotingSystem\\WebVotingSystem\\WebVotingSystem\\WebVotingSystem.csproj",
       "projectName": "WebVotingSystem",
-      "projectPath": "C:\\Users\\klittle-windows-10\\source\\repos\\WebVotingSystem\\WebVotingSystem\\WebVotingSystem.csproj",
+      "projectPath": "C:\\Users\\klittle-windows-10\\source\\repos\\WebVotingSystem\\WebVotingSystem\\WebVotingSystem\\WebVotingSystem.csproj",
       "packagesPath": "C:\\Users\\klittle-windows-10\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\klittle-windows-10\\source\\repos\\WebVotingSystem\\WebVotingSystem\\obj\\",
+      "outputPath": "C:\\Users\\klittle-windows-10\\source\\repos\\WebVotingSystem\\WebVotingSystem\\WebVotingSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

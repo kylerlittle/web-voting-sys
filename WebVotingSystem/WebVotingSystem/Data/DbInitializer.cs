@@ -43,7 +43,7 @@ namespace WebVotingSystem.Data
             var polls = new Poll[]
             {
                 new Poll{PollID=1,StartTime=DateTime.Parse("2018-03-14"), EndTime=DateTime.Parse("2018-05-05"), Name="TestPoll1", PollCreator="Kyler",
-                Type="Registered Public", Questions=pollQs1 }
+                Type=PollType.ACCOUNT_FREE, Questions=pollQs1 }
             };
 
             foreach (Poll poll in polls)

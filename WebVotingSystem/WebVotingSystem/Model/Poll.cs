@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebVotingSystem.Model
 {
-    //public enum PollType { ACCOUNT_FREE, REGISTERED_PUBLIC, INVITE_ONLY }
+    public enum PollType { ACCOUNT_FREE, REGISTERED_PUBLIC, INVITE_ONLY }
     public class Poll
     {        
         public int PollID { get; set; }        // primary key
@@ -17,7 +17,7 @@ namespace WebVotingSystem.Model
         
         //public Dictionary<string, List<string>> Questions { get; set; }                      // < Question, List < Choice > >
         //public Dictionary<string, Dictionary<string, int>> Results { get; set; }                    // < Question, < Choice, NumberOfVotes > >
-        public string Type { get; set; }
+        public PollType Type { get; set; }
 
 
         public IEnumerable<PollQuestion> Questions { get; set; }

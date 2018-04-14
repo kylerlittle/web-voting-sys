@@ -33,7 +33,7 @@ namespace WebVotingSystem.Pages.PublicPolls
             {
                 return Page();
             }
-
+            Poll.Type = PollType.ACCOUNT_FREE;
             _context.Polls.Add(Poll);
             await _context.SaveChangesAsync();
 
