@@ -24,6 +24,8 @@ namespace web_voting_sys.Pages.Polls
             return Page();
         }
 
+        public IEnumerable<PollQuestion> PollQuestions { get; set; }
+
         [BindProperty]
         public Poll Poll { get; set; }
 
@@ -33,7 +35,6 @@ namespace web_voting_sys.Pages.Polls
             {
                 return Page();
             }
-
             _context.Polls.Add(Poll);
             await _context.SaveChangesAsync();
 

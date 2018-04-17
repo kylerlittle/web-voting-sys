@@ -1,11 +1,11 @@
 ﻿@page
-@model web_voting_sys.Pages.Polls.CreateModel
+@model web_voting_sys.Pages.Polls.VoteModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Vote";
 }
 
-<h2>Create</h2>
+<h2>Vote</h2>
 
 <h4>Poll</h4>
 <hr />
@@ -13,6 +13,7 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Poll.ID" />
             <div class="form-group">
                 <label asp-for="Poll.StartTime" class="control-label"></label>
                 <input asp-for="Poll.StartTime" class="form-control" />
@@ -35,23 +36,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="Poll.Type" class="control-label"></label>
-                <select asp-for="Poll.Type" class="form-control" asp-items="Html.GetEnumSelectList<Model.PollType>()"></select>
+                <select asp-for="Poll.Type" class="form-control"></select>
                 <span asp-validation-for="Poll.Type" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PollQuestions" class="control-label"></label>
-                <input asp-for="PollQuestions" class="form-control" />
-                <span asp-validation-for="Poll.Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {

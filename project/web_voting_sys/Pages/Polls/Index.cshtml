@@ -50,6 +50,7 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
+                <a asp-page="./Vote" asp-route-id="@item.ID">Vote</a> |
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
