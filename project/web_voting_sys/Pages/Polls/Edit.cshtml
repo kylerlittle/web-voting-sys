@@ -1,0 +1,55 @@
+﻿@page
+@model web_voting_sys.Pages.Polls.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Poll</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Poll.ID" />
+            <div class="form-group">
+                <label asp-for="Poll.StartTime" class="control-label"></label>
+                <input asp-for="Poll.StartTime" class="form-control" />
+                <span asp-validation-for="Poll.StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Poll.EndTime" class="control-label"></label>
+                <input asp-for="Poll.EndTime" class="form-control" />
+                <span asp-validation-for="Poll.EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Poll.Name" class="control-label"></label>
+                <input asp-for="Poll.Name" class="form-control" />
+                <span asp-validation-for="Poll.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Poll.PollCreator" class="control-label"></label>
+                <input asp-for="Poll.PollCreator" class="form-control" />
+                <span asp-validation-for="Poll.PollCreator" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Poll.Type" class="control-label"></label>
+                <select asp-for="Poll.Type" class="form-control"></select>
+                <span asp-validation-for="Poll.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
