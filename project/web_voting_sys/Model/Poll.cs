@@ -20,6 +20,8 @@ namespace web_voting_sys.Model
         public PollType Type { get; set; }
         public readonly int MaximimumQuestions = 5;          // make the default max 5 for now
         public int NumberOfQuestions { get; set; }
+        public readonly int MaximumAnswersPerQuestion = 5;           // make default max 5 for now
+        public int AnswersPerQuestion { get; set; }         // for now, have same amount of answers for each question (in the future, we could change this)
         public List<PollQuestion> Questions { get; set; }
         public List<Data.ApplicationUser> Voters { get; set; }
     }

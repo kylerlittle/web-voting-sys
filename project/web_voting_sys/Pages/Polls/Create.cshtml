@@ -49,12 +49,9 @@
                 </select>
                 <span asp-validation-for="Poll.NumberOfQuestions" class="text-danger"></span>
             </div>
-            <!--The part below is for testing purposes only and doesn't actually belong on this page. Should be on details page.-->
-            @foreach (var input_question in Model.Poll.Questions)
-            {
-                <p>Default Question: @Html.DisplayFor(model => input_question.Question)</p>
-            }
-            <!--The part below should be on a separate page, which is a part of poll creation, but cannot be finished until NumberOfQuestions is decided by user.-->
+            <!--In future, add option for user to set the max number of choices per question in Poll class itself.-->
+
+            <!--The part below should be on a separate page, which is a part of poll creation, but cannot be finished until NumberOfQuestions and ChoicesPerQuestion is decided by user.-->
             @for (int i = 0; i < Model.PollQuestions.Count; ++i)
             {
                 <div class="form-group">
@@ -62,6 +59,14 @@
                     <input asp-for="PollQuestions[i].Question" class="form-control" />
                     <span asp-validation-for="PollQuestions[i].Question" class="text-danger"></span>
                 </div>
+                @for (int j = 0; j < Model.PollChoices[i].Count; ++j)
+                {
+                    <div class="form-group">
+                        <label asp-for="PollChoices[i][j].Choice" class="control-label">@((char)(j + 'a'))</label>        <!--Label choices as 'a', 'b', ...-->
+                        <input asp-for="PollChoices[i][j].Choice" class="form-control" />
+                        <span asp-validation-for="PollChoices[i][j].Choice" class="text-danger"></span>
+                    </div>
+                }
             }
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

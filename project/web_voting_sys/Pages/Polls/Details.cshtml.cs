@@ -21,6 +21,7 @@ namespace web_voting_sys.Pages.Polls
 
         public Poll Poll { get; set; }
         public List<PollQuestion> PollQuestions { get; set; }
+        public List<List<PollChoice>> PollChoices { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -37,6 +38,17 @@ namespace web_voting_sys.Pages.Polls
                 .AsNoTracking()
                 .Where(q => q.PollID == id)
                 .ToListAsync();
+
+            // TODO: PollChoices.Append() isn't actually working? Not sure why...
+            PollChoices = new List<List<PollChoice>>(Poll.MaximimumQuestions);
+            foreach (PollQuestion pollQuestion in PollQuestions)
+            {
+                List<PollChoice> choicesForQuestion = await _context.PollChoices
+                    .AsNoTracking()
+                    .Where(pq => pq.PollQuestionID == pollQuestion.ID)
+                    .ToListAsync();
+                PollChoices.Append(new List<PollChoice>(choicesForQuestion));
+            }
 
             if (Poll == null)
             {

@@ -46,6 +46,10 @@
         @foreach (var question in Model.PollQuestions)
         {
         <dd>@Html.DisplayFor(model => question.Question)</dd>
+            @foreach (var choice in Model.PollChoices)
+            {
+                <dd>choice.ElementAt(Model.PollQuestions.IndexOf(question))</dd>
+            }
         }
     </dl>
 </div>
