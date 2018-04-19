@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int}"
 @model web_voting_sys.Pages.Polls.DetailsModel
 
 @{
@@ -41,6 +41,11 @@
         <dd>
             @Html.DisplayFor(model => model.Poll.Type)
         </dd>
+        @foreach (var question in Model.Poll.Questions)
+        {
+            <dt>@Html.DisplayNameFor(model => model.Poll.Questions.First().Question)</dt>
+            <dd>Question: @Html.DisplayFor(model => question.Question)</dd>
+        }
     </dl>
 </div>
 <div>

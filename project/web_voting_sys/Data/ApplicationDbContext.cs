@@ -29,6 +29,8 @@ namespace web_voting_sys.Data
         public PollContext(DbContextOptions<PollContext> dbContextOptions) : base(dbContextOptions) { }
 
         public DbSet<Poll> Polls { get; set; }
+        public DbSet<PollQuestion> PollQuestions { get; set; }
+        public DbSet<PollChoice> PollChoices { get; set; }
 
         /// <summary>
         /// Because developers disagree on whether or not the table name should be plural, we override
@@ -38,6 +40,8 @@ namespace web_voting_sys.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Poll>().ToTable("Poll");
+            modelBuilder.Entity<PollQuestion>().ToTable("PollQuestion");
+            modelBuilder.Entity<PollChoice>().ToTable("PollChoice");
         }
     }
 }
