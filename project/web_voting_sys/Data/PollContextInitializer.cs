@@ -20,10 +20,10 @@ namespace web_voting_sys.Data
 
             var pollQs = new List<PollQuestion>
             {
-                new PollQuestion{
+                new PollQuestion {
                     ID =1,
                     Question ="What is your favorite color?",
-                    Answers = new PollChoice[] { new PollChoice{ID=1, Choice="red" },
+                    Answers = new List<PollChoice> { new PollChoice{ID=1, Choice="red" },
                     new PollChoice{ID=2, Choice="blue" }, new PollChoice{ID=3, Choice="green"} } }
             };
 

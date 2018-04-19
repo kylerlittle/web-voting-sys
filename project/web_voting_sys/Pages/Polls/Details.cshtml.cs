@@ -20,6 +20,7 @@ namespace web_voting_sys.Pages.Polls
         }
 
         public Poll Poll { get; set; }
+        public List<PollQuestion> PollQuestions { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,7 +29,14 @@ namespace web_voting_sys.Pages.Polls
                 return NotFound();
             }
 
+            // Grab the poll that matches the ID passed as route value!
             Poll = await _context.Polls.SingleOrDefaultAsync(m => m.ID == id);
+
+            // Use LINQ query to filter only poll questions that have IDs that match the poll ID (route value)
+            PollQuestions = await _context.PollQuestions
+                .AsNoTracking()
+                .Where(q => q.PollID == id)
+                .ToListAsync();
 
             if (Poll == null)
             {

@@ -21,22 +21,13 @@ namespace web_voting_sys.Pages.Polls
 
         public IActionResult OnGet()
         {
-            // Initialize  "Num Question Options List." By default, let's have something like 5... would need to change in "Edit" Page as well.
-            // which means there is a better design choice out there. Ah well.
-            int maxNumQs = 5;
-            NumQuestionOptions = new List<int>(maxNumQs);
-            for (int i = 0; i < NumQuestionOptions.Capacity; ++i)
-            {
-                NumQuestionOptions.Append(i);
-            }
-
-            // Testing:
-            List<PollQuestion> pollQuestions = new List<PollQuestion>
+            // Testing: here I put in some default values for the form
+            PollQuestions = new List<PollQuestion>
             {
                 new PollQuestion
                 {
                     Question = "What is your name?",
-                    Answers = new PollChoice[]
+                    Answers = new List<PollChoice>
                     {
                         new PollChoice
                         {
@@ -54,8 +45,8 @@ namespace web_voting_sys.Pages.Polls
                 },
                 new PollQuestion
                 {
-                    Question = "What is your favorite color",
-                    Answers = new PollChoice[]
+                    Question = "What is your favorite color?",
+                    Answers = new List<PollChoice>
                     {
                         new PollChoice
                         {
@@ -72,31 +63,25 @@ namespace web_voting_sys.Pages.Polls
                     }
                 }
             };
+            
             Poll = new Poll
             {
                 StartTime = DateTime.Now,
                 EndTime = DateTime.Now.AddSeconds(300.0),           // 5 min poll
                 Name = "Default",
-                PollCreator = "Default Creator",
+                PollCreator = "Default",
                 Type = PollType.Public,
                 NumberOfQuestions = 2,
-                Questions = pollQuestions
+                Questions = PollQuestions
             };
             return Page();
         }
 
-        //public int NumberOfQuestions { get; set; }
-
-        [BindProperty]
-        public PollQuestion SingleQ { get; set; }
-        //public List<PollQuestion> PollQuestions { get; set; }
-        public List<int> NumQuestionOptions { get; set; }
-
         [BindProperty]
         public Poll Poll { get; set; }
 
-        //[BindProperty]
-        //public PollQuestion PollQuestion { get; set; }
+        [BindProperty]
+        public List<PollQuestion> PollQuestions { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
         {
@@ -104,14 +89,15 @@ namespace web_voting_sys.Pages.Polls
             {
                 return Page();
             }
-            //Poll.Questions.Append(SingleQ);
+            Poll.Questions = PollQuestions;
             _context.Polls.Add(Poll);
             await _context.SaveChangesAsync();
-
-            _context.PollQuestions.Add(SingleQ);
+            
+            for (int i = 0; i < PollQuestions.Count; ++i)
+            {
+                PollQuestions[i].PollID = Poll.ID;
+            }
             await _context.SaveChangesAsync();
-
-            Console.WriteLine(String.Format("Q: {0}", SingleQ.Question));
 
             return RedirectToPage("./Index");
         }

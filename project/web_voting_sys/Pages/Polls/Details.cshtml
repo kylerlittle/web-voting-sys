@@ -41,10 +41,11 @@
         <dd>
             @Html.DisplayFor(model => model.Poll.Type)
         </dd>
-        @foreach (var question in Model.Poll.Questions)
+        <!--The code below displays poll questions-->
+        <dt>Questions</dt>
+        @foreach (var question in Model.PollQuestions)
         {
-            <dt>@Html.DisplayNameFor(model => model.Poll.Questions.First().Question)</dt>
-            <dd>Question: @Html.DisplayFor(model => question.Question)</dd>
+        <dd>@Html.DisplayFor(model => question.Question)</dd>
         }
     </dl>
 </div>

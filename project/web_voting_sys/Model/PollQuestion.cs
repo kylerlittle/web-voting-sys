@@ -8,7 +8,8 @@ namespace web_voting_sys.Model
     public class PollQuestion
     {
         public int ID { get; set; }      // primary key
+        public int PollID { get; set; }      // poll that this question belongs to
         public string Question { get; set; }
-        public IEnumerable<PollChoice> Answers { get; set; }
+        public List<PollChoice> Answers { get; set; }
     }
 }

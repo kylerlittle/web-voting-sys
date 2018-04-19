@@ -38,54 +38,31 @@
                 <select asp-for="Poll.Type" class="form-control" asp-items="Html.GetEnumSelectList<Model.PollType>()"></select>
                 <span asp-validation-for="Poll.Type" class="text-danger"></span>
             </div>
+            <!--Set max number of questions in Poll class itself.-->
             <div class="form-group">
                 <label asp-for="Poll.NumberOfQuestions" class="control-label"></label>
                 <select asp-for="Poll.NumberOfQuestions" class="form-control">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                    @for (int i = 1; i <= Model.Poll.MaximimumQuestions; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
                 </select>
                 <span asp-validation-for="Poll.NumberOfQuestions" class="text-danger"></span>
             </div>
-
+            <!--The part below is for testing purposes only and doesn't actually belong on this page. Should be on details page.-->
             @foreach (var input_question in Model.Poll.Questions)
             {
                 <p>Default Question: @Html.DisplayFor(model => input_question.Question)</p>
             }
-
-            @for (int i = 0; i < Model.Poll.NumberOfQuestions; ++i)
+            <!--The part below should be on a separate page, which is a part of poll creation, but cannot be finished until NumberOfQuestions is decided by user.-->
+            @for (int i = 0; i < Model.PollQuestions.Count; ++i)
             {
                 <div class="form-group">
-                    <label asp-for="Poll.Questions[i].Question" class="control-label"></label>
-                    <input asp-for="Poll.Questions[i].Question" class="form-control" />
-                    <span asp-validation-for="Poll.Questions[i].Question" class="text-danger"></span>
+                    <label asp-for="PollQuestions[i].Question" class="control-label">Question @(i+1)</label>
+                    <input asp-for="PollQuestions[i].Question" class="form-control" />
+                    <span asp-validation-for="PollQuestions[i].Question" class="text-danger"></span>
                 </div>
             }
-            @*<dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Poll.Questions)
-            </dt>
-            @Html.D
-            <dd>
-                @Html.DisplayFor(model => model.Poll.Questions)
-            </dd>
-        </dl>*@
-
-            @*<div class="form-group">
-            <label asp-for="SingleQ.Question" class="control-label"></label>
-            <input asp-for="SingleQ.Question" class="form-control" />
-            <span asp-validation-for="SingleQ.Question" class="text-danger"></span>
-
-        </div>*@
-            @*@{ for (int i = 0; i < 3; i++)
-                {
-                    <div class="form-group">
-                        <label asp-for="PollQuestions.ElementAt(NumberOfQuestions - 1).Question" class="control-label"></label>
-                        <input asp-for="PollQuestions.ElementAt(i).Question" class="form-control" />
-                        <span asp-validation-for="PollQuestions.ElementAt(i).Question" class="text-danger"></span>
-                    </div>
-        }
-                    }*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
