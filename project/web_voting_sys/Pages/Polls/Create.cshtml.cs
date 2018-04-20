@@ -99,43 +99,12 @@ namespace web_voting_sys.Pages.Polls
                 return Page();
             }
 
-            // Add relationships for 'Poll'
-            Poll.Questions = PollQuestions;
-            for (int i = 0; i < Poll.Questions.Count; ++i)
-            {
-                Poll.Questions[i].Answers = PollChoices[i];
-            }
-
             // Add poll
             _context.Polls.Add(Poll);
             await _context.SaveChangesAsync();
-            
-            //// Add relationships for 'PollQuestions'
-            //for (int i = 0; i < PollQuestions.Count; ++i)
-            //{
-            //    PollQuestions[i].PollID = Poll.ID;
-            //    PollQuestions[i].Answers = PollChoices[i];
 
-            //    // Add each PollQuestion in list
-            //    _context.PollQuestions.Add(PollQuestions[i]);
-            //    await _context.SaveChangesAsync();
-            //}
-
-            //// Add relationships for 'PollChoices'
-            //for (int i = 0; i < PollChoices.Count; ++i)
-            //{
-            //    for (int j = 0; j < PollChoices[i].Count; ++j)
-            //    {
-            //        PollChoices[i][j].PollQuestionID = PollQuestions[i].ID;
-            //        PollChoices[i][j].VoteTally = 0;         // on creation, nobody has voted for the choice yet
-
-            //        // Add each PollChoice to database
-            //        _context.PollChoices.Add(PollChoices[i][j]);
-            //        await _context.SaveChangesAsync();
-            //    }
-            //}
-
-            return RedirectToPage("./Index");
+            // Continue creation of poll by creating the questions, pass Poll's ID to ensure questions are associated with correct poll.
+            return RedirectToPagePermanent("./CreatePollQuestions", new { id = Poll.ID });
         }
     }
 }

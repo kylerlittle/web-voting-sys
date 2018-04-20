@@ -45,10 +45,11 @@
         <dt>Questions</dt>
         @foreach (var question in Model.PollQuestions)
         {
+            <!--Display all of the choices for each question-->
         <dd>@Html.DisplayFor(model => question.Question)</dd>
-            @foreach (var choice in Model.PollChoices)
+            @for (int i = 0; i < Model.Poll.AnswersPerQuestion; ++i)
             {
-                <dd>choice.ElementAt(Model.PollQuestions.IndexOf(question))</dd>
+                <dd>choice: @Model.PollChoices[@Model.PollQuestions.IndexOf(question)][i].Choice</dd>
             }
         }
     </dl>

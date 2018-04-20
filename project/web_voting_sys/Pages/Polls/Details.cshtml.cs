@@ -47,7 +47,7 @@ namespace web_voting_sys.Pages.Polls
                     .AsNoTracking()
                     .Where(pq => pq.PollQuestionID == pollQuestion.ID)
                     .ToListAsync();
-                PollChoices.Append(new List<PollChoice>(choicesForQuestion));
+                PollChoices.Add(new List<PollChoice>(choicesForQuestion));
             }
 
             if (Poll == null)

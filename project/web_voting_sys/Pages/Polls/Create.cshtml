@@ -2,7 +2,7 @@
 @model web_voting_sys.Pages.Polls.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create a poll.";
 }
 
 <h2>Create</h2>
@@ -38,7 +38,7 @@
                 <select asp-for="Poll.Type" class="form-control" asp-items="Html.GetEnumSelectList<Model.PollType>()"></select>
                 <span asp-validation-for="Poll.Type" class="text-danger"></span>
             </div>
-            <!--Set max number of questions in Poll class itself.-->
+            <!--Note that max number of questions was set in Poll class itself.-->
             <div class="form-group">
                 <label asp-for="Poll.NumberOfQuestions" class="control-label"></label>
                 <select asp-for="Poll.NumberOfQuestions" class="form-control">
@@ -49,27 +49,19 @@
                 </select>
                 <span asp-validation-for="Poll.NumberOfQuestions" class="text-danger"></span>
             </div>
-            <!--In future, add option for user to set the max number of choices per question in Poll class itself.-->
-
-            <!--The part below should be on a separate page, which is a part of poll creation, but cannot be finished until NumberOfQuestions and ChoicesPerQuestion is decided by user.-->
-            @for (int i = 0; i < Model.PollQuestions.Count; ++i)
-            {
-                <div class="form-group">
-                    <label asp-for="PollQuestions[i].Question" class="control-label">Question @(i+1)</label>
-                    <input asp-for="PollQuestions[i].Question" class="form-control" />
-                    <span asp-validation-for="PollQuestions[i].Question" class="text-danger"></span>
-                </div>
-                @for (int j = 0; j < Model.PollChoices[i].Count; ++j)
-                {
-                    <div class="form-group">
-                        <label asp-for="PollChoices[i][j].Choice" class="control-label">@((char)(j + 'a'))</label>        <!--Label choices as 'a', 'b', ...-->
-                        <input asp-for="PollChoices[i][j].Choice" class="form-control" />
-                        <span asp-validation-for="PollChoices[i][j].Choice" class="text-danger"></span>
-                    </div>
-                }
-            }
+            <!--Note that max answers per question was set in Poll class itself.-->
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <label asp-for="Poll.AnswersPerQuestion" class="control-label"></label>
+                <select asp-for="Poll.AnswersPerQuestion" class="form-control">
+                    @for (int i = 1; i <= Model.Poll.MaximumAnswersPerQuestion; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <span asp-validation-for="Poll.AnswersPerQuestion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Poll Questions" asp-route="Model.Poll.ID" class="btn btn-default" />
             </div>
         </form>
     </div>
