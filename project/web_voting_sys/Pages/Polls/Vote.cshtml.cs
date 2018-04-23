@@ -22,6 +22,8 @@ namespace web_voting_sys.Pages.Polls
 
         [BindProperty]
         public Poll Poll { get; set; }
+        public List<PollQuestion> PollQuestions { get; set; }
+        public List<List<PollChoice>> PollChoices { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,7 +32,25 @@ namespace web_voting_sys.Pages.Polls
                 return NotFound();
             }
 
+            // Grab the poll that matches the ID passed as route value!
             Poll = await _context.Polls.SingleOrDefaultAsync(m => m.ID == id);
+
+            // Use LINQ query to filter only poll questions that have IDs that match the poll ID (route value)
+            PollQuestions = await _context.PollQuestions
+                .AsNoTracking()
+                .Where(q => q.PollID == id)
+                .ToListAsync();
+
+            // TODO: PollChoices.Append() isn't actually working? Not sure why...
+            PollChoices = new List<List<PollChoice>>(Poll.MaximimumQuestions);
+            foreach (PollQuestion pollQuestion in PollQuestions)
+            {
+                List<PollChoice> choicesForQuestion = await _context.PollChoices
+                    .AsNoTracking()
+                    .Where(pq => pq.PollQuestionID == pollQuestion.ID)
+                    .ToListAsync();
+                PollChoices.Add(new List<PollChoice>(choicesForQuestion));
+            }
 
             if (Poll == null)
             {
