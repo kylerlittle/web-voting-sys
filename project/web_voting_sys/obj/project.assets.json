@@ -13126,27 +13126,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\scrap\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Users\\klittle-windows-10\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\scrap\\Source\\Repos\\web-voting-sys\\project\\web_voting_sys\\web_voting_sys.csproj",
+      "projectUniqueName": "C:\\Users\\klittle-windows-10\\source\\repos\\web-voting-sys\\project\\web_voting_sys\\web_voting_sys.csproj",
       "projectName": "web_voting_sys",
-      "projectPath": "C:\\Users\\scrap\\Source\\Repos\\web-voting-sys\\project\\web_voting_sys\\web_voting_sys.csproj",
-      "packagesPath": "C:\\Users\\scrap\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\scrap\\Source\\Repos\\web-voting-sys\\project\\web_voting_sys\\obj\\",
+      "projectPath": "C:\\Users\\klittle-windows-10\\source\\repos\\web-voting-sys\\project\\web_voting_sys\\web_voting_sys.csproj",
+      "packagesPath": "C:\\Users\\klittle-windows-10\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\klittle-windows-10\\source\\repos\\web-voting-sys\\project\\web_voting_sys\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\scrap\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "C:\\Users\\klittle-windows-10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"

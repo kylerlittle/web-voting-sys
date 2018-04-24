@@ -22,8 +22,12 @@ namespace web_voting_sys.Pages.Polls
 
         [BindProperty]
         public Poll Poll { get; set; }
+        [BindProperty]
         public List<PollQuestion> PollQuestions { get; set; }
+        [BindProperty]
         public List<List<PollChoice>> PollChoices { get; set; }
+        [BindProperty]
+        public List<string> SelectedAnswers { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -35,13 +39,19 @@ namespace web_voting_sys.Pages.Polls
             // Grab the poll that matches the ID passed as route value!
             Poll = await _context.Polls.SingleOrDefaultAsync(m => m.ID == id);
 
+            // If Poll is null, then for some reason it doesn't exist...
+            if (Poll == null)
+            {
+                return NotFound();
+            }
+
             // Use LINQ query to filter only poll questions that have IDs that match the poll ID (route value)
             PollQuestions = await _context.PollQuestions
                 .AsNoTracking()
                 .Where(q => q.PollID == id)
                 .ToListAsync();
 
-            // TODO: PollChoices.Append() isn't actually working? Not sure why...
+            // Use LINQ query again to filter only poll choices that have IDs that match the corresponding question IDs
             PollChoices = new List<List<PollChoice>>(Poll.MaximimumQuestions);
             foreach (PollQuestion pollQuestion in PollQuestions)
             {
@@ -52,10 +62,13 @@ namespace web_voting_sys.Pages.Polls
                 PollChoices.Add(new List<PollChoice>(choicesForQuestion));
             }
 
-            if (Poll == null)
+            // Lastly, initialize SelectedAnswers with default values so that the page can accept the form.
+            SelectedAnswers = new List<string>(Poll.NumberOfQuestions);
+            for (int i = 0; i < PollQuestions.Count; ++i)
             {
-                return NotFound();
+                SelectedAnswers.Add("");         // by default, set to empty
             }
+
             return Page();
         }
 
@@ -65,26 +78,16 @@ namespace web_voting_sys.Pages.Polls
             {
                 return Page();
             }
-
-            _context.Attach(Poll).State = EntityState.Modified;
-
-            try
+            
+            for (int i = 0; i < SelectedAnswers.Count; ++i)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PollExists(Poll.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                PollChoice pc = await _context.PollChoices.SingleOrDefaultAsync(c => c.Choice == SelectedAnswers[i]);    // grab poll choice from db that matches selected answer
+                pc.VoteTally += 1;      // increment the vote tally since the user selected it
+                _context.Attach(pc).State = EntityState.Modified;         // declare that the poll choice has been modified
+                await _context.SaveChangesAsync();            // save changes to database
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Pollindex");
         }
 
         private bool PollExists(int id)
