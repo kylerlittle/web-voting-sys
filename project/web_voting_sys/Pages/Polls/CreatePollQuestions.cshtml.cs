@@ -80,7 +80,7 @@ namespace web_voting_sys.Pages.Polls
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Pollindex");
         }
     }
 }
