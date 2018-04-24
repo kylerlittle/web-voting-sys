@@ -18,7 +18,13 @@
                 <h2>@Html.DisplayFor(model => question.Question)</h2>
                     @for (int i = 0; i < Model.Poll.AnswersPerQuestion; ++i)
                      {
-                        <dd>@Model.PollChoices[@Model.PollQuestions.IndexOf(question)][i].Choice</dd>
+                        <div>@Model.PollChoices[@Model.PollQuestions.IndexOf(question)][i].Choice</div>
+                        //<a asp-page="." /a>
+                        <a class="btn btn-default"
+                           asp-page="./VoteConfirmation" asp-route-id ="@Model.Poll.ID" asp-route-question = "@Model.PollQuestions.IndexOf(question)" asp-route-choice="@i">
+                           Vote
+                        </a>
+                        <p>&nbsp; </p>
                      }
                 <p>&nbsp; </p>
              }
@@ -26,7 +32,7 @@
     </div>
 </div>
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Pollindex">Back to List</a>
 </div>
 
 @section Scripts {

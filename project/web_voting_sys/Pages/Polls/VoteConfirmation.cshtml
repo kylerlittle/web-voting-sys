@@ -1,4 +1,12 @@
 ﻿@page
-@model VoteConfirmationModel
+@model web_voting_sys.Pages.Polls.VoteConfirmationModel
+
 @{
+    ViewData["Title"] = "Confirmation";
 }
+
+<h2> Your Vote Has Been Tallied!</h2>
+<p>&nbsp;</p>
+<div>
+    <a asp-page="./Pollindex">Back to List</a>
+</div>
