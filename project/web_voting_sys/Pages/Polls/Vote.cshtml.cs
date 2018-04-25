@@ -87,7 +87,7 @@ namespace web_voting_sys.Pages.Polls
                 await _context.SaveChangesAsync();            // save changes to database
             }
 
-            return RedirectToPage("./Pollindex");
+            return RedirectToPage("./VoteConfirmation");
         }
 
         private bool PollExists(int id)

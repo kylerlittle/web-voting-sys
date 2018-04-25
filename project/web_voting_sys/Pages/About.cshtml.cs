@@ -12,7 +12,7 @@ namespace web_voting_sys.Pages
 
         public void OnGet()
         {
-            Message = "Your application description page.";
+            Message = "Learn about WebVotingSystem below!";
         }
     }
 }

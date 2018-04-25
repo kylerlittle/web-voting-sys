@@ -11,27 +11,42 @@
     }
 </style>
 <div class="jumbotron">
-    <h1>Web Voting System</h1>
+    <h1>Welcome to WebVotingSystem</h1>
 </div>
 <div class="row">
     <div class="col-md-4">
-        <h2>Welcome to WebVotingSystem!</h2>
-        
-    </div>
-    <div class="col-md-4">
         <h2>Create an Account</h2>
+        <p>
+            Register to make an account! Your account details will be private to us.
+        </p>
         <p>
             <a class="btn btn-default"
                asp-page="./Account/Register">
-                Button
+                Register
             </a>
         </p>
     </div>
     <div class="col-md-4">
         <h2>Log In</h2>
+        <p>
+            If you've already registered, log in by clicking on the button below.
+        </p>
+        <p>
             <a class="btn btn-default"
                asp-page="./Account/Login">
-                Button
+                Login
+            </a>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Check out the Polls</h2>
+        <p>
+            Create a poll, vote on a poll, or view a poll's details!
+        </p>
+        <p>
+            <a class="btn btn-default"
+               asp-page="./Polls/Pollindex">
+                Polls
             </a>
         </p>
     </div>
