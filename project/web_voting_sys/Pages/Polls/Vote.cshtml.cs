@@ -27,7 +27,7 @@ namespace web_voting_sys.Pages.Polls
         [BindProperty]
         public List<List<PollChoice>> PollChoices { get; set; }
         [BindProperty]
-        public List<string> SelectedAnswers { get; set; }
+        public List<int> SelectedAnswers { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -63,10 +63,10 @@ namespace web_voting_sys.Pages.Polls
             }
 
             // Lastly, initialize SelectedAnswers with default values so that the page can accept the form.
-            SelectedAnswers = new List<string>(Poll.NumberOfQuestions);
+            SelectedAnswers = new List<int>(Poll.NumberOfQuestions);
             for (int i = 0; i < PollQuestions.Count; ++i)
             {
-                SelectedAnswers.Add("");         // by default, set to empty
+                SelectedAnswers.Add(Int32.MinValue);         // by default, set to empty
             }
 
             return Page();
@@ -81,7 +81,7 @@ namespace web_voting_sys.Pages.Polls
             
             for (int i = 0; i < SelectedAnswers.Count; ++i)
             {
-                PollChoice pc = await _context.PollChoices.SingleOrDefaultAsync(c => c.Choice == SelectedAnswers[i]);    // grab poll choice from db that matches selected answer
+                PollChoice pc = await _context.PollChoices.SingleOrDefaultAsync(c => c.ID == SelectedAnswers[i]);    // grab poll choice from db that matches selected answer
                 pc.VoteTally += 1;      // increment the vote tally since the user selected it
                 _context.Attach(pc).State = EntityState.Modified;         // declare that the poll choice has been modified
                 await _context.SaveChangesAsync();            // save changes to database

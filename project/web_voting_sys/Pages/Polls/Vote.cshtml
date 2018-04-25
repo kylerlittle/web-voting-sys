@@ -21,7 +21,7 @@
 {
             <!--Display each choice for that question and give it a radio button.-->
         <label>
-            @Html.RadioButtonFor(m => m.SelectedAnswers[@Model.PollQuestions.IndexOf(question)], Model.PollChoices[@Model.PollQuestions.IndexOf(question)][i].Choice)
+            @Html.RadioButtonFor(m => m.SelectedAnswers[@Model.PollQuestions.IndexOf(question)], Model.PollChoices[@Model.PollQuestions.IndexOf(question)][i].ID)
             @Html.DisplayTextFor(m => m.PollChoices[Model.PollQuestions.IndexOf(question)][i].Choice)
         </label>
         <p>&nbsp; </p>
